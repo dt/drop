@@ -1,0 +1,5 @@
+[program:drops]
+command=/usr/local/bin/node Server.js 8999
+directory=_LOKO_INSTALL%{LOKO_SOURCE}
+stderr_logfile=/data/log/supervisord/drops.stderr.log
+stdout_logfile=/data/log/supervisord/drops.stdout.log
