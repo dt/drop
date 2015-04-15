@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Drop</title>
+    <link rel="stylesheet" type="text/css" href="static/dropzone.css" />
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <style>
+
+    </style>
+  </head>
+  <body>
+  <div id="container">
+    <form id="uploadForm" enctype="multipart/form-data" action="/upload" method="post" class="dropzone">
+        <input type="file" name="file" multiple=false />
+        <input type="submit" value="Upload" name="submit" />
+    </form>
+    <ul id="uploads">
+    </ul>
+  </div>
+  </body>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+  <script src="static/dropzone.js"></script>
+  <script>
+  $(document).ready(function() {
+
+    var $uploads = $('#uploads');
+
+    function uploaded(remote, targ) {
+      var a = document.createElement('a');
+      a.href='/'+remote;
+      $a = $(a).append($("<img>").attr('src', a.href));
+      var abs = a.protocol+"//"+a.host+a.pathname;
+      $txt = $("<input>").attr('type', 'text').val(abs);
+      $txt.click(function() { this.select();});
+      var $li = $("<li>").append($a).append($txt).append($("<div>").addClass("clearfix"));
+      $uploads.prepend($li);
+      $txt.focus().select();
+      console.log(abs);
+    }
+
+    $('#uploadForm').submit(function(e) {
+      e.preventDefault();
+      $(this).ajaxSubmit({
+        error: function(xhr) { console.log('Error: ' + xhr.status); },
+        success: function(response) {uploaded(response['file'], e.target);}
+      });
+      return false;
+    });
+
+    Dropzone.options.uploadForm = {
+      uploadMultiple: false,
+      success: function(file, resp) { uploaded(resp['file'], window)}
+    };
+  });
+  </script>
+</html>

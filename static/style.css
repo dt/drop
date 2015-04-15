@@ -1,0 +1,54 @@
+body {
+  background-color: #334466;
+  font-family: sans-serif;
+}
+
+#container {
+  background-color: #fff;
+  border-radius: 5px;
+  border: none;
+  padding: 3em;
+}
+
+#uploadForm {
+  font-size: 2em;
+  background-color: #eee;
+  border: 1px dashed #999;
+  border-radius: 5px;
+  font-style: small-caps;
+}
+
+ul#uploads {
+  padding: 0;
+}
+
+#uploads li {
+  margin: 0;
+  margin-bottom: 10px;
+  list-style: none;
+  border-radius: 5px;
+  border: 1px dotted #999;
+  background-color: #fff
+
+}
+#uploads li img {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  margin: 5px;
+  float: left;
+}
+.dropzone .dz-complete {
+  display: none;
+}
+#uploads li input[type="text"]
+{
+  line-height: 90px;
+  margin-left: 10px;
+  border-radius: 2px;
+  border: none;
+  width: 90%;
+  font-size:24px;
+  float: left;
+}
+.clearfix { clear: both;}

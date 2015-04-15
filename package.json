@@ -1,0 +1,9 @@
+{
+  "name": "file_upload",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "latest",
+    "multer": "latest",
+    "serve-static": "latest"
+  }
+}
